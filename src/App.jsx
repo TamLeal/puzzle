@@ -126,7 +126,6 @@ function App() {
               className={`peca ${pecaSelecionada === peca ? 'selecionada' : ''}`}
               style={{
                 backgroundImage: `url("${imagemAtualUrl}")`,
-                backgroundSize: '400px 400px',
                 backgroundPosition: `${-(peca.posicaoOriginal % 4) * 100}px ${-Math.floor(peca.posicaoOriginal / 4) * 100}px`
               }}
               onClick={() => trocarPeca(peca)}
@@ -136,13 +135,10 @@ function App() {
       </div>
       <div className="gabarito-container">
         <h2>Gabarito</h2>
-        <div className="gabarito">
-          {imagemPersonalizada ? (
-            <div className="gabarito-imagem" style={{backgroundImage: `url("${imagemPersonalizada}")`}} />
-          ) : (
-            <div dangerouslySetInnerHTML={{ __html: imagens[imagemAtual] }} />
-          )}
-        </div>
+        <div
+          className="gabarito"
+          style={{ backgroundImage: `url(${imagemAtualUrl})` }}
+        ></div>
         <select onChange={(e) => mudarImagem(e.target.value)} value={imagemAtual}>
           <option value="paisagem">Paisagem</option>
           <option value="gato">Gato</option>
