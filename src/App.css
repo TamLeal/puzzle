@@ -40,7 +40,7 @@ header h1 {
 .tabuleiro {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0; /* Remover o espaçamento entre as peças */
+  grid-gap: 0;
   margin: 20px auto;
   background-color: #ccc;
   padding: 10px;
@@ -52,7 +52,7 @@ header h1 {
   width: 80px;
   height: 80px;
   background-size: 320px 320px;
-  border: 1px solid #fff; /* Manter a borda branca */
+  border: 1px solid #fff;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -115,10 +115,10 @@ header h1 {
 }
 
 .gabarito {
-  width: 80%; /* Adjusted from 200px */
+  width: 80%;
   max-width: 200px;
   height: auto;
-  aspect-ratio: 1; /* Maintain aspect ratio */
+  aspect-ratio: 1;
   position: relative;
   border: 2px solid #333;
   border-radius: 10px;
@@ -134,7 +134,7 @@ button,
 input[type="file"] {
   display: inline-block;
   width: 100%;
-  max-width: 250px; /* Adjusted width */
+  max-width: 250px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -161,7 +161,7 @@ input[type="file"] {
 .label-input-file {
   display: inline-block;
   width: 100%;
-  max-width: 250px; /* Adjusted width to match */
+  max-width: 250px;
   padding: 10px 0;
   font-size: 16px;
   cursor: pointer;
@@ -209,19 +209,32 @@ input[type="file"] {
 @media (max-width: 767px) {
   .container {
     flex-direction: column;
-    padding: 10px; /* Ajustar o padding para dispositivos móveis */
+    padding: 10px;
+    gap: 10px; /* Reduzir o espaçamento entre elementos */
   }
 
   .tabuleiro {
-    margin: 10px auto; /* Ajustar o margin para dispositivos móveis */
+    margin: 10px 0;
   }
 
   .gabarito {
-    margin-bottom: 10px; /* Ajustar o margin para dispositivos móveis */
+    margin-bottom: 10px;
   }
 
   .mensagem {
-    font-size: 16px; /* Ajustar o tamanho da fonte para dispositivos móveis */
+    font-size: 16px;
+    height: 40px; /* Ajustar a altura da mensagem */
+  }
+
+  header h1 {
+    font-size: 20px; /* Ajustar o tamanho do título */
+  }
+
+  select,
+  button,
+  .label-input-file {
+    width: 100%;
+    max-width: 200px; /* Ajustar a largura dos elementos */
   }
 }
 
