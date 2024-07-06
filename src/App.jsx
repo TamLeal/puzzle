@@ -128,7 +128,7 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h1>Quebra-Cabeça de 16 Peças</h1>
+        <h1>16 Peças</h1>
       </header>
       <main className="jogo">
         <div className="tabuleiro">
