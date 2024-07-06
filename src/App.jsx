@@ -106,12 +106,23 @@ function App() {
     if (file) {
       const reader = new FileReader();
       reader.onload = function(e) {
-        setImagemPersonalizada(e.target.result);
-        setImagemAtual('personalizada');
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = 400;
+          canvas.height = 400;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, 400, 400);
+          const resizedImgUrl = canvas.toDataURL();
+          setImagemPersonalizada(resizedImgUrl);
+          setImagemAtual('personalizada');
+        }
+        img.src = e.target.result;
       }
       reader.readAsDataURL(file);
     }
   }
+  
 
   const imagemAtualUrl = imagemPersonalizada || `data:image/svg+xml;base64,${btoa(imagens[imagemAtual])}`;
 
@@ -126,7 +137,8 @@ function App() {
             className={`peca ${pecaSelecionada === peca ? 'selecionada' : ''}`}
             style={{
               backgroundImage: `url("${imagemAtualUrl}")`,
-              backgroundPosition: `${-(peca.posicaoOriginal % 4) * 100}px ${-Math.floor(peca.posicaoOriginal / 4) * 100}px`
+              backgroundPosition: `${-(peca.posicaoOriginal % 4) * 100}px ${-Math.floor(peca.posicaoOriginal / 4) * 100}px`,
+              backgroundSize: "400px 400px"
             }}
             onClick={() => trocarPeca(peca)}
           />
@@ -162,3 +174,4 @@ function App() {
 }
 
 export default App;
+

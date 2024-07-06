@@ -38,12 +38,20 @@ body {
 }
 
 .peca {
-  width: 80px; /* Adjusted from 100px */
-  height: 80px; /* Adjusted from 100px */
-  background-size: 320px 320px; /* Adjusted from 400px 400px */
+  width: 80px;
+  height: 80px;
+  background-size: 320px 320px;
   border: 1px solid #fff;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .peca {
+    width: 100px;
+    height: 100px;
+    background-size: 400px 400px;
+  }
 }
 
 .peca:hover {
