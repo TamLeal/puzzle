@@ -125,7 +125,7 @@ input[type="file"] {
 .label-input-file {
   display: inline-block;
   width: 100%;
-  max-width: 200px; /* Adjusted width */
+  max-width: 250px; /* Adjusted width to match */
   padding: 10px 0px;
   font-size: 16px;
   cursor: pointer;
