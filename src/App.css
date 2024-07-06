@@ -58,10 +58,35 @@ header h1 {
 }
 
 @media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .jogo {
+    flex: 1;
+  }
+
+  .gabarito-container {
+    width: auto;
+  }
+
+  .gabarito {
+    width: 200px;
+    height: 200px;
+  }
+
   .peca {
     width: 100px;
     height: 100px;
     background-size: 400px 400px;
+  }
+
+  select,
+  button,
+  .label-input-file {
+    width: 100%;
+    max-width: 250px;
   }
 }
 
@@ -181,36 +206,9 @@ input[type="file"] {
 
 /* Media Queries for Responsiveness */
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   .container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .jogo {
-    flex: 1;
-  }
-
-  .gabarito-container {
-    width: auto;
-  }
-
-  .gabarito {
-    width: 200px;
-    height: 200px;
-  }
-
-  .peca {
-    width: 100px;
-    height: 100px;
-    background-size: 400px 400px;
-  }
-
-  select,
-  button,
-  .label-input-file {
-    width: 100%;
-    max-width: 250px;
+    flex-direction: column;
   }
 }
 
