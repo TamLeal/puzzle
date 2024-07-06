@@ -102,76 +102,76 @@ function App() {
   }
 
   function carregarImagemPersonalizada(event) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const canvas = document.createElement('canvas');
-          canvas.width = 400;
-          canvas.height = 400;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, 400, 400);
-          const resizedImgUrl = canvas.toDataURL();
-          setImagemPersonalizada(resizedImgUrl);
-          setImagemAtual('personalizada');
-        }
-        img.src = e.target.result;
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 400;
+        canvas.height = 400;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, 400, 400);
+        const resizedImgUrl = canvas.toDataURL();
+        setImagemPersonalizada(resizedImgUrl);
+        setImagemAtual('personalizada');
       }
-      reader.readAsDataURL(file);
+      img.src = e.target.result;
     }
+    reader.readAsDataURL(file);
   }
+}
+
 
   const imagemAtualUrl = imagemPersonalizada || `data:image/svg+xml;base64,${btoa(imagens[imagemAtual])}`;
 
   return (
-    <div className="container">
-      <header>
-        <h1>16 Peças</h1>
-      </header>
-      <main className="jogo">
-        <div className="tabuleiro">
-          {pecas.map((peca) => (
-            <div
-              key={peca.id}
-              className={`peca ${pecaSelecionada === peca ? 'selecionada' : ''}`}
-              style={{
-                backgroundImage: `url("${imagemAtualUrl}")`,
-                backgroundPosition: `${-(peca.posicaoOriginal % 4) * 100}px ${-Math.floor(peca.posicaoOriginal / 4) * 100}px`,
-                backgroundSize: "400px 400px"
-              }}
-              onClick={() => trocarPeca(peca)}
-            />
-          ))}
-        </div>
-      </main>
-      <aside className="gabarito-container">
-        <h2>Gabarito</h2>
-        <div
-          className="gabarito"
-          style={{ backgroundImage: `url(${imagemAtualUrl})` }}
-        ></div>
-        <select onChange={(e) => mudarImagem(e.target.value)} value={imagemAtual}>
-          <option value="paisagem">Paisagem</option>
-          <option value="gato">Gato</option>
-          <option value="abstrato">Abstrato</option>
-          {imagemPersonalizada && <option value="personalizada">Imagem Personalizada</option>}
-        </select>
-        <input type="file" id="file" accept="image/*" onChange={carregarImagemPersonalizada} />
-        <label htmlFor="file" className="label-input-file">Escolher Arquivo</label>
-        <button onClick={conferirQuebracabeca}>Conferir</button>
-      </aside>
-      <div className="mensagem">{mensagem}</div>
-      {vitoria && (
-        <div className="vitoria">
-          <h2>Parabéns!</h2>
-          <p>Você completou o quebra-cabeça!</p>
-          <button onClick={reiniciarJogo}>Jogar Novamente</button>
-        </div>
-      )}
+  <div className="container">
+    <div className="jogo">
+      <h1>Quebra-Cabeça de 16 Peças</h1>
+      <div className="tabuleiro">
+        {pecas.map((peca) => (
+          <div
+            key={peca.id}
+            className={`peca ${pecaSelecionada === peca ? 'selecionada' : ''}`}
+            style={{
+              backgroundImage: `url("${imagemAtualUrl}")`,
+              backgroundPosition: `${-(peca.posicaoOriginal % 4) * 100}px ${-Math.floor(peca.posicaoOriginal / 4) * 100}px`,
+              backgroundSize: "400px 400px"
+            }}
+            onClick={() => trocarPeca(peca)}
+          />
+        ))}
+      </div>
     </div>
-  );
+    <div className="gabarito-container">
+      <h2>Gabarito</h2>
+      <div
+        className="gabarito"
+        style={{ backgroundImage: `url(${imagemAtualUrl})` }}
+      ></div>
+      <select onChange={(e) => mudarImagem(e.target.value)} value={imagemAtual}>
+        <option value="paisagem">Paisagem</option>
+        <option value="gato">Gato</option>
+        <option value="abstrato">Abstrato</option>
+        {imagemPersonalizada && <option value="personalizada">Imagem Personalizada</option>}
+      </select>
+      <input type="file" id="file" accept="image/*" onChange={carregarImagemPersonalizada} />
+      <label htmlFor="file" className="label-input-file">Escolher Arquivo</label>
+      <button onClick={conferirQuebracabeca}>Conferir</button>
+    </div>
+    <div className="mensagem">{mensagem}</div>
+    {vitoria && (
+      <div className="vitoria">
+        <h2>Parabéns!</h2>
+        <p>Você completou o quebra-cabeça!</p>
+        <button onClick={reiniciarJogo}>Jogar Novamente</button>
+      </div>
+    )}
+  </div>
+);
 }
 
 export default App;
+
