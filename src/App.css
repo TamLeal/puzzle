@@ -2,7 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   background-color: #f7f7f7;
   font-family: 'Roboto', sans-serif;
@@ -10,11 +10,10 @@ body {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
-  align-items: flex-start;
-  position: relative;
-  max-width: 1200px;
+  align-items: center;
+  max-width: 90%;
   margin: auto;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -24,7 +23,7 @@ body {
 
 .jogo {
   text-align: center;
-  flex: 1;
+  width: 100%;
 }
 
 .tabuleiro {
@@ -39,9 +38,9 @@ body {
 }
 
 .peca {
-  width: 100px;
-  height: 100px;
-  background-size: 400px 400px;
+  width: 80px; /* Adjusted from 100px */
+  height: 80px; /* Adjusted from 100px */
+  background-size: 320px 320px; /* Adjusted from 400px 400px */
   border: 1px solid #fff;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -68,12 +67,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
+  width: 100%;
 }
 
 .gabarito {
-  width: 200px;
-  height: 200px;
+  width: 80%; /* Adjusted from 200px */
+  max-width: 200px;
+  height: auto;
+  aspect-ratio: 1; /* Maintain aspect ratio */
   position: relative;
   border: 2px solid #333;
   border-radius: 10px;
@@ -87,21 +88,50 @@ body {
 select,
 button,
 input[type="file"] {
+  display: inline-block;
   width: 100%;
+  max-width: 250px; /* Adjusted width */
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #4CAF50;
+  background-color: #7e57c2;
   color: white;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.3s;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 select:hover,
-button:hover {
-  background-color: #45a049;
+button:hover,
+input[type="file"]:hover {
+  background-color: #5e35b1;
+  transform: translateY(-2px);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.label-input-file {
+  display: inline-block;
+  width: 100%;
+  max-width: 200px; /* Adjusted width */
+  padding: 10px 0px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #7e57c2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.label-input-file:hover {
+  background-color: #5e35b1;
   transform: translateY(-2px);
 }
 
@@ -128,4 +158,39 @@ button:hover {
 
 .celebracao {
   animation: celebracao 0.5s ease infinite;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .jogo {
+    flex: 1;
+  }
+
+  .gabarito-container {
+    width: auto;
+  }
+
+  .gabarito {
+    width: 200px;
+    height: 200px;
+  }
+
+  .peca {
+    width: 100px;
+    height: 100px;
+    background-size: 400px 400px;
+  }
+
+  select,
+  button,
+  .label-input-file {
+    width: 100%;
+    max-width: 250px;
+  }
 }
