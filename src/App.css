@@ -209,6 +209,19 @@ input[type="file"] {
 @media (max-width: 767px) {
   .container {
     flex-direction: column;
+    padding: 10px; /* Ajustar o padding para dispositivos móveis */
+  }
+
+  .tabuleiro {
+    margin: 10px auto; /* Ajustar o margin para dispositivos móveis */
+  }
+
+  .gabarito {
+    margin-bottom: 10px; /* Ajustar o margin para dispositivos móveis */
+  }
+
+  .mensagem {
+    font-size: 16px; /* Ajustar o tamanho da fonte para dispositivos móveis */
   }
 }
 
