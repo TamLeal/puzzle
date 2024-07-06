@@ -1,3 +1,6 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 body {
   display: flex;
   justify-content: center;
@@ -21,6 +24,14 @@ body {
   border-radius: 10px;
 }
 
+header h1 {
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 10px 0;
+  color: #333;
+}
+
 .jogo {
   text-align: center;
   width: 100%;
@@ -29,7 +40,7 @@ body {
 .tabuleiro {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px;
+  grid-gap: 0; /* Remover o espaçamento entre as peças */
   margin: 20px auto;
   background-color: #ccc;
   padding: 10px;
@@ -41,7 +52,7 @@ body {
   width: 80px;
   height: 80px;
   background-size: 320px 320px;
-  border: 1px solid #fff;
+  border: 1px solid #fff; /* Manter a borda branca */
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -126,7 +137,7 @@ input[type="file"] {
   display: inline-block;
   width: 100%;
   max-width: 250px; /* Adjusted width to match */
-  padding: 10px 0px;
+  padding: 10px 0;
   font-size: 16px;
   cursor: pointer;
   background-color: #7e57c2;
@@ -200,5 +211,22 @@ input[type="file"] {
   .label-input-file {
     width: 100%;
     max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabuleiro {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .peca {
+    width: 60px;
+    height: 60px;
+    background-size: 240px 240px;
+  }
+
+  .gabarito {
+    width: 100px;
+    height: 100px;
   }
 }
